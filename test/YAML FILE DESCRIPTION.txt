@@ -1,0 +1,62 @@
+=====================================
+YAML BASICS
+=====================================
+1. ALL YAML files can begin
+--- #Begining og line
+- name: My 1st Palybook
+  hosts: web
+  user: ec2-user
+  become: yes
+  become_method: sudo
+  task:
+    - name: 1. Install Latest Apache/HTTPD vesion
+      yum : name=httpd state=present
+
+    - name: 2. Start the HTTPD service
+      service: name=httpd state=started enable=yes
+
+... #end of line
+
+
+===============================
+Syntax to run ansible commands
+===============================
+# ansible-playbook copy_file.yml --check    -> it will check the syntax in file or errors
+# ansible-playbook copy_file.yml  ->run ansible commands
+
+
+
+=============================================================
+What is Gather facts in Ansible
+Ansible gather Facts in Directory
+How to disable gather facts in ansible-playbook
+How to Check the YAML Syntax
+Ansible Playbook to add or append new line to file
+Ansible playbook to disable SELINUX
+Variable In Ansible
+Ansible playbook with Variable
+=============================================================
+---->Gather facts
+# Display facts from all hosts and store them indexed by I(hostname) at C(/tmp/facts).
+# ansible all -m gather_facts --tree /tmp/facts
+# ansible all -m gather_facts -t /home/facts01  -> to store in another directory
+
+gather_facts = no
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

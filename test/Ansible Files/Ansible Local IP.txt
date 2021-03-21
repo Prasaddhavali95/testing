@@ -1,0 +1,570 @@
+vim /etc/ansible/hosts  -> add below file into this 
+
+192.168.1.102	 Ansible_Controller
+
+192.168.1.103	 Ansible_Client01  
+
+192.168.1.104	 Ansible_Client02
+
+192.168.1.105    Ansible_Client03
+
+web ansible_host=Ansible_Client01 ansible_user=root ansible_ssh_pass=redhat
+app ansible_host=Ansible_Client02 ansible_user=root ansible_ssh_pass=redhat
+db ansible_host=Ansible_Client03 ansible_user=root ansible_ssh_pass=redhat
+
+******************************** TO ping hostname *********************************************
+ansible web -m ping   (here web is allise)
+web | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+****************************************
+if you ping all in command it will display all machine respond
+
+[root@ansible_controller ~]# ansible all -m ping
+db | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+web | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+app | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+**********************************************
+
+ansible-doc --list | grep setup
+
+ansible-doc -s setup
+- name: Gathers facts about remote hosts
+  setup:
+
+
+To install software on host machine use below command
+ansible app -u root -m yum -a "name=httpd state=present" -b
+
+**************************************************************************************************
+---------------------------------------------------------------------------------------------------------------------------------
+18/11/2020:- Ansible
+Today Topics:
+-create a custome inventory file.
+-Ansible with custom inventory
+-More Ansible Modules from Command line
+-Understand /etc/ansible/ansible.cfg file
+-Build Ansible setup for user ec2-user
+-Ansible Command line with ec2-user
+-Understand Ansible --become with ec2-user
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+vim /opt/inventory
+
+Command to find inventory:-
+ ansible web -m ping -i /opt/inventory
+ 
+ ************************
+ Ansible USER Modules
+ ************************
+ 
+ Add User :
+ #ansible web -m user -a "name=ec2-user state=present generate_ssh_key=yes"
+
+Remove user:
+ #ansible web -m user -a "name=ec2-user state=absent remove=yes"
+ 
+ ************************
+ Ansible Service Modules
+ ************************
+ 
+ #ansible app -m service -a "name=httpd state=started" -become
+ #ansible app -m service -a "name=httpd state=stopped" -become
+
+ ************************
+ Ansible Copy Modules
+ ************************
+ 
+ #ansible all -m copy -a "src=/tmp/a.txt dest=/tmp/a.txt" -b
+ 
+
+-> Ansible Command line with ec2-user*****************
+
+useradd ec2-user
+passwd ec2-user
+
+ls -la
+ssh-keygen
+cd .ssh
+ls -la
+ssh-copy-id -i id_rsa.pub ec2-user@ansible_client01   --> it will copy that file in another host
+
+**********************************************
+Ansible Create local user in all node:---
+ansible local -m user -a"name=ec2-user state=present generate_ssh_key=yes"
+ansible all -m user -a"name=ec3-user state=absent remove=yes"
+
+************Authorized_key copied in another host using ansible**************************
+#ansible web -m authorized_key -a"user=ec2-user state=present key={{ lookup('file', '/home/ec2-user/.ssh/id_rsa.pub')}}"
+**********************************************
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+21/11/2020 Ansible
+- Build Ansible setup for ec2-user with Manual steps.
+- Ansible lookup plugin
+- Build Ansible setup for user ec2-user with ansible.
+- Ansible Command line with ec2-user.
+- Understand Ansible --become with ec2-user.
+- Ansible declarative language YAML
+- What is play-book in Ansible.
+---------------------------------------------------------------------------------------------------------------------------------
+Ansible lookup plugin:=Commands
+ ansible-doc -t lookup -l
+ 
+ ansible web -m authorized_key -a "user=ec2-user state=present key={{ lookup('file', '/home/ec2-user/.ssh/id_rsa.pub')}}"
+ 
+ 
+ 
+ 
+ 
+ 
+===============================
+Syntax to run ansible commands
+===============================
+# ansible-playbook copy_file.yml --check    -> it will check the syntax in file or errors
+# ansible-playbook copy_file.yml  ->run ansible commands
+ 
+ 
+ 
+ --------------------------------------------------------------------------------------------------------------------------------
+ 25/11/2020
+ What is Gather Facts in Ansible.
+ Ansible gather Facts in Directory
+ How to disable gather facts in ansible play-book
+ How to check the YAML Syntax
+ Ansible Playbook to add or append new line to file.
+ Ansible playbook to disable SELINUX
+ Variables In Ansible
+ Ansible playbook with Variables
+ 
+ --------------------------------------------------------------------------------------------------------------------------------
+
+---->Gather facts
+# Display facts from all hosts and store them indexed by I(hostname) at C(/tmp/facts).
+# ansible all -m gather_facts --tree /tmp/facts
+# ansible all -m gather_facts -t /home/facts01  -> to store in another directory
+
+gather_facts = no
+
+#ansible all -m user -a "name=sep state=present" -b   --> will create another user
+
+==============================================================================================================
+
+#####################################
+#How to check the YAML Syntax
+#####################################
+Syntax:----
+
+to check syntax valid goto http://www.yamllint.com/   ---> check file or code it will find error
+
+1 -- install Atom IDE
+2 -- apm install linter-js-yaml  run this command in cmd prompt
+
+
+
+=============================================================================================================
+
+==========================================================================================
+ Ansible Playbook to add or append new line to file.#################
+ ---
+- name: Search for new line in a file. If found replace it, if not add it
+  hosts: all
+  user: ec2-user
+  become: yes
+  become_method: sudo
+  tasks:
+     - name: Add new DNS server to resolve.conf file
+       lineinfile:
+         path: /etc/resolv.conf
+         line: 'nameserver 8.8.1.1'
+
+
+...
+============================================================================================
+============================================================================================
+ Ansible playbook to disable SELINUX
+---
+- name: Search for new line in a file. If found replace it, if not add it
+  hosts: all
+  user: ec2-user
+  become: yes
+  become_method: sudo
+  tasks:
+     - name: Disable SELINUX
+       lineinfile:
+         path: /etc/selinux/config
+         regexp: '^SELINUX='
+         line: 'SELINUX-disable'
+
+
+...
+=============================================================================================
+
+=============================================================================================
+ #Variables In Ansible
+
+define variable in Ansible
+
+vars:
+    resolv_entry:nameserver 8.8.2.2
+	'{{ resolv_entry}}'    --jinja Temp we call it
+	
+	
+	example:
+	
+---
+- name: Search for new line in a file. If found replace it, if not add it
+  hosts: all
+  user: ec2-user
+  become: yes
+  become_method: sudo
+  vars:                                    --->> declarativeof var
+      resolv_entry: nameserver 10.10.10.10
+  tasks:
+     - name: Add new DNS server to resolve.conf file
+       lineinfile:
+         path: /etc/resolv.conf
+         line: '{{ resolv_entry }}'     <<------defining var here
+
+...
+
+=============================================================================================
+
+
+=============================================================================================
+Condition in Ansible
+Logical oprators and Ansible condition. (and | or)
+Logical oprators and Ansible condition as list
+Ansible Run a local script on remote node.
+what is Ansible Loops.
+Ansible loop with with_items statement.
+Ansible loop with loop statement
+
+=============================================================================================
+condition.yml 
+web -m setup | grep os   or distribution
+
+
+
+---
+- name: Search for new line in a file. If found replace it, if not add it
+  hosts: all
+  user: ec2-user
+  #gater_facts: no
+  become: yes
+  become_method: sudo
+  tasks:
+     - name: Install ZIp on RED-HAT system
+       yum:
+	       name: zip
+		   state: present
+	   when: ansible_os_family == "Redhat"	   
+   
+     - name: Install Zip on RED-HAT system
+       yum:
+	       name: zip
+		   state: present
+	   when: ansible_os_family == "Debian"
+
+
+...
+
+================================================================================================
+
+logicaloprator.yml
+
+
+---
+- name: Search for new line in a file. If found replace it, if not add it
+  hosts: all
+  user: ec2-user
+  #gater_facts: no
+  become: yes
+  become_method: sudo
+  tasks:
+     - name: Install Nginx on RED-HAT system
+       yum:
+	       name: zip
+		   state: present
+	   when: ansible_os_family == "Redhat"	AND  ansible_os_version == "20.10"   
+   
+     - name: Install Nginx on RED-HAT system
+       apt:
+	       name: zip
+		   state: present
+	   when: ansible_os_family == "Debian" OR  ansible_os_version == "20.10" 
+
+
+...
+========================================================================================
+
+AnsibleScript
+
+ansible-doc -s script
+
+script.yml
+
+---
+- name: Search for new line in a file. If found replace it, if not add it
+  hosts: all
+  user: ec2-user
+  #gater_facts: no
+  become: yes
+  become_method: sudo
+  tasks:
+     - name: Run ls.sh and outpuy "ls /"
+	   script: ls.sh
+	   register: out
+	   
+	 - debug: var=out.stdout_lines	 
+   
+  
+...  
+==================================================================================================================
+
+Ansible Loops
+
+
+---
+- name: create multiple user in ansible using loop
+  hosts: all
+  user: ec2-user
+  #gater_facts: no
+  become: yes
+  become_method: sudo
+  tasks:
+     - name: 1.Create user.
+	   user: 
+	     name: '{{item}}'
+		 generate_ssh_key: yes
+		 loop: 
+		  - santosh1
+		  - sunil1
+		  - pradeep2
+		  - sandy12
+		  
+...
+
+==================================================================================================================
+
+
+
+==================================================================================================================
+Ansible Roles
+TAGS in Ansible
+Handler in Ansible
+Ansible Galaxy
+==================================================================================================================
+####Ansible Roles
+# tree home   ->> display the tree structure of directory
+
+webstack/
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── README.md
+├── tasks
+│   └── main.yml
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
+
+
+create one directory like webstack in that make folder in that folder craete another file like group_vars folder, hosts files,
+LICENCE.md file, main.yml file, REDME.md file, roles folder ....
+
+in main.yml file you need mention everything like ntp setup, DNS setup like
+
+-name: Configure DNS CLient
+ template: src=resolve.conf dest=/etc/resolv.conf 
+ tags: dns
+ 
+-name: Install ntp
+ template: name=ntp state=present
+ tags: ntp
+ 
+-name: Copy ntp
+ template: src=ntp.conf dest=/etc/ntp.conf 
+ tags: ntp
+ notify: restart ntp service
+
+
+
+
+Ansible Roles in that two roles 1)common and 2)web 
+
+
+inside template directory create ntp.conf and resolv.conf
+==========================================================================================================
+
+Ansible-Galaxy Commands
+
+# ansible-galaxy search mysql
+# ansible-galaxy install mysql
+# ansible-galaxy list
+# ansible-config dump | grep Roles
+
+# ansible-galaxy --help
+# ansible-galaxy search ntp
+
+=========================================================================================================
+
+
+
+
+
+LAMP: (Linux,Apache,Mariadb/Mysql,PHP)
+ 
+
+		  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

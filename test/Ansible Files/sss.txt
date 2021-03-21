@@ -1,0 +1,136 @@
+vim /etc/ansible/hosts  -> add below file into this 
+
+web ansible_host=Ansible_Client01 ansible_user=root ansible_ssh_pass=redhat
+app ansible_host=Ansible_Client02 ansible_user=root ansible_ssh_pass=redhat
+db ansible_host=Ansible_Client03 ansible_user=root ansible_ssh_pass=redhat
+
+******************************** TO ping hostname *********************************************
+ansible web -m ping   (here web is allise)
+web | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+****************************************
+if you ping all in command it will display all machine respond
+
+[root@ansible_controller ~]# ansible all -m ping
+db | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+web | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+app | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+**********************************************
+
+ansible-doc --list | grep setup
+
+ansible-doc -s setup
+- name: Gathers facts about remote hosts
+  setup:
+
+
+To install software on host machine use below command
+ansible app -u root -m yum -a "name=httpd state=present" -b
+
+**************************************************************************************************
+
+
+
+
+
+
+#172.16.3.250
+172.16.3.53      siem.verse.in
+172.16.0.51      dhsiem.verse.in
+172.16.3.20      ocs.verse.in
+172.16.3.33      tkt.verse.in
+172.16.3.80      central.dailyhunt.in
+172.16.3.110     nagios.verse.in
+#172.16.3.123
+172.16.3.121     ids.verse.in
+172.16.3.118     status.verse.in
+#172.16.3.30
+#172.16.3.67
+172.16.3.68      corpva.verse.in
+#172.16.3.72
+#172.16.3.73
+172.16.3.145     localhost.localdomain
+#172.16.0.194
+172.16.3.77      zabbix.verse.in
+172.16.3.97      transporter
+#172.16.3.140    patcher.verse.in
+172.16.3.197     parrot
+
+
+##172.16.3.250
+172.16.3.53
+172.16.0.51
+172.16.3.20
+172.16.3.33
+172.16.3.80
+172.16.3.110
+#172.16.3.123
+172.16.3.121
+172.16.3.118
+#172.16.3.30
+#172.16.3.67
+172.16.3.68
+#172.16.3.72
+#172.16.3.73
+172.16.3.145
+#172.16.0.194
+172.16.3.77
+172.16.3.97
+#172.16.3.140
+172.16.3.197
+
+
+siem.verse.in
+dhsiem.verse.in
+ocs.verse.in
+tkt.verse.in
+central.dailyhunt.in
+nagios.verse.in
+ids.verse.in
+status.verse.in
+corpva.verse.in
+localhost.localdomain
+zabbix.verse.in
+transporter
+patcher.verse.in
+parrot
+
+
+sudo git clone --branch v4.0.0_7.8.0 https://github.com/wazuh/wazuh-ansible#wazuh-ansible
+Just finished the course “Learning Excel 2016” David Rivers! #microsoftexcel #spreadsheets
+
+Just finished the course “Learning Ansible” by Anthony Sequeira!
+
+
+Just finished the course “Office 365 for Administrators: Supporting Users (Office 365/Microsoft 365)”  Sharon Bennett! #itservicemanagement #office365administration
+
+
+Just finished the course “Introduction to IT Architecture” Ed Liberman! #itservicemanagement #enterpriseitinfrastructure #enterpriseitstrategy
+Just finished the course “Learning Debian Linux” Scott Simpson! #debian
+
+
+
+

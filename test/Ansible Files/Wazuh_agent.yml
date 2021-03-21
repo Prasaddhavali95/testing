@@ -1,0 +1,5 @@
+- hosts: wazuh-hosts
+  remote_user: root
+  gather_facts: no
+  roles:
+    - /etc/ansible/roles/wazuh-ansible/roles/ansible-wazuh-agent

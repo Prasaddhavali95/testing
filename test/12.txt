@@ -1,0 +1,1 @@
+C:\Program Files (x86)\ossec-agent\agent-auth.exe -m 182.72.156.179 -v C:\Program Files (x86)\ossec-agent\rootCA.pem

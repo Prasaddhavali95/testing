@@ -1,0 +1,31 @@
+VER-BLR-LT1878  xps
+VER-BLR-LT1857  xps
+RENT-ARP-LT5120  xps
+RENT-ARP-LT5140  DELL
+RENT-ARP-LT5109   DELL
+RENT-ARP-LT5123 DELL
+RENT-ARP-LT5186  DELL
+RENT-ARP-LT5187   DELL
+VER-BLR-LT1774  DELL
+RENT-ARP-LT1581  DELL
+VER-BLR-LT1763   MAC
+
+
+
+
+-----Battery Issue----
+LENOVO E40-80 i3  (Aparna George)
+LENOVO T440P i7   (Ishak Alamin Barbhuiya)
+LENOVO T440P i7   (Deepak G)
+LENOVO E40-80 i3  (Prahlad Kumar)
+
+-----Mac Charger------
+Macbook Pro A1398 i7	(Karan kumar Jitendrabhai Patel)
+
+
+------Dell Battery-----
+Dell Latitude 3490 i5  (Surbhi Kumari)
+
+
+
+ 

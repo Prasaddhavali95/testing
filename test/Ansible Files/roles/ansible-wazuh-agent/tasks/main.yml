@@ -1,0 +1,7 @@
+---
+- name: "INstalling Wazuh Agent"
+  shell: "sudo WAZUH_MANAGER='siem.verse.in' yum install -y https://packages.wazuh.com/4.x/yum/wazuh-agent-4.0.3-1.x86_64.rpm"
+
+- name: "Restart Wazuh Agent"
+  shell: "systemctl restart wazuh-agent"
+  

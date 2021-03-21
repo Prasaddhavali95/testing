@@ -1,0 +1,19 @@
+ansible hosts -m "shell" -a "sudo WAZUH_MANAGER='siem.verse.in' yum install -y https://packages.wazuh.com/4.x/yum/wazuh-agent-4.0.3-1.x86_64.rpm ;systemctl restart wazuh-agent" --become --become-user root -u root -i hosts -k
+
+
+ansible hosts -m "shell" -a "sudo WAZUH_MANAGER='siem.verse.in' curl -so wazuh-agent.deb https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.0.3-1_amd64.deb && sudo WAZUH_MANAGER='siem.verse.in' dpkg -i ./wazuh-agent.deb ;sudo service wazuh-agent start" --become --become-user root -u root -i hosts -k
+
+
+ansible-playbook -vv -i hosts.txt wazuh-agent.yml
+
+
+
+172.16.3.114
+172.16.3.118
+172.16.3.145
+172.16.3.72
+172.16.3.68
+172.16.3.63
+172.16.3.96
+172.16.3.33
+

@@ -1,0 +1,47 @@
+chage -l username
+
+
+Hello,
+As our busy schedule today we are not able to conduct interview, 
+tommarrow at 3pm we are conducting please share your mail id details
+
+Thanks,
+Prasad Dhavali
+8073057825
+
+
+
+cut -d: -f1 /etc/passwd
+Vivek Khare11:32 AM
+extract the list of users
+run a loop to read first user name till last user name
+inside the loop run chage command with username
+
+
+Vivek Khare11:31 AM
+cut -d: -f1 /etc/passwd
+Vivek Khare11:32 AM
+extract the list of users
+run a loop to read first user name till last user name
+inside the loop run chage command with username
+
+
+ awk -F ':' '$3>=1000 {print "Valid User :"$1","$3}'  /etc/passwd
+ 
+ 
+ 
+ 
+ 
+ 
+ $ sudo vi /opt/scripts/user-password-expiration-date.sh
+
+#!/bin/sh
+for user in $(cat /etc/passwd |cut -d: -f1)
+do echo $user
+chage -l $user | grep "Password expires"
+done | paste -d " "  - - | sed 's/Password expires//g'
+
+
+
+
+cut -f 1 -d: /etc/passwd | xargs -n 1 -I {} bash -c " echo -e '\n{}' ; chage -l {}"

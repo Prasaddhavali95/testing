@@ -1,0 +1,13 @@
+--- #Begining og line
+- name: My 1st Palybook
+  hosts: web
+  user: ec2-user
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Copy the file
+      copy: src=/home/abcd.txt dest=/tmp/abcd.txt mode=777
+
+   
+
+... #end of line

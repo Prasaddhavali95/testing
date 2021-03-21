@@ -1,0 +1,156 @@
+create template of otrs 
+user need to drop down box like need to enter laptop hostname,manager mail id, laptop configuration ,
+manager should get approval and disapproval etc.
+
+
+mail should be go to hr,admin team,it-team,
+
+
+OTRS workflow
+http://192.168.1.101/otrs/index.pl
+OTRS USERNAME: root@localhost
+OTRS password: p1Wra4f1P5ms8SJu
+
+processmaker.com
+
+Prasad:
+OTRS: Ticket Templates
+OTRS: Workflow
+
+CENT OS :
+username : root
+password : Cerner@12
+
+Ubuntu OS:
+username : IBM
+password : ibm@2021
+
+Prasad:
+OTRS: Ticket Templates 
+
+2020073193000093
+
+450000?
+non returnable
+
+RENT-ARP-LT5065
+RENT-ARP-LT5018
+
+
+
+
+
+
+Changed password for user apm_system
+PASSWORD apm_system = oPlnaT8GqFK48dLzWjOl
+
+Changed password for user kibana_system
+PASSWORD kibana_system = SFV246eLWGc1seVKaMBQ
+
+Changed password for user kibana
+PASSWORD kibana = SFV246eLWGc1seVKaMBQ
+
+Changed password for user logstash_system
+PASSWORD logstash_system = LlrFaEQ92HN1K3YfJKqm
+
+Changed password for user beats_system
+PASSWORD beats_system = S8mkLKEPMzDdbUHwP17m
+
+Changed password for user remote_monitoring_user
+PASSWORD remote_monitoring_user = XcEOwGbxMEwZvdXZp4du
+
+Changed password for user elastic
+PASSWORD elastic = 1LxGgXeRrqTVOB9oTAnP
+
+
+192.168.1.17 ip
+
+ BalaMurali krishna*
+27th Main, Nagaraj Building, E G Pura,
+Viveknagar Post, 24th B Cross Rd, VGS Layout, Muneshwara Layout, Ejipura,
+Bengaluru, 560047
+8971220960
+
+
+
+OTRS: Template for all Change requests:
+
+Change Date
+Change Start Time
+Change End Time
+Change Impact
+Change Components
+Change Plan
+Plan to Roll back
+Communication required for end users [Y/N]
+Communication sent to users [Y/N]
+Approval from all other stakeholders received [Y/N]
+
+
+
+Frontend::Agent::Ticket::ViewPhoneNew
+
+
+
+OTRS VIDEO'S 
+
+https://www.youtube.com/watch?v=aA3S5b3w824
+https://www.youtube.com/watch?v=5-NTv_g3OK8
+https://www.youtube.com/watch?v=WI6kLSUFrSE
+https://www.youtube.com/watch?v=GuV5uCurO5c
+
+
+
+Prasad:
+OTRS:installed packages📦,created custom fields 
+OTRS: Workflow checking 
+
+
+in stock
+RENT-ARP-LT5055
+
+
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = req_ext
+prompt = no
+[req_distinguished_name]
+C = IN
+CN = 172.16.3.62
+[req_ext]
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = wazuh
+DNS.2 = wazuh.com
+
+04ba8df06d1d
+
+d83bbf86fa24
+
+
+
+
+Sunil Kumar H
+[Critical] : Wazuh Vulnerability Fix (VER-BLR-LT1925)
+new
+unlock
+IT Servicedesk
+Prasad Dhavali
+sunilkumar.h@dailyhunt.in
+	
+  P2 High
+2020110593001543	
+4 d 16 h
+Sunil Kumar H
+[Critical] : Wazuh Vulnerability Fix (RENT-ARP- LT5227)
+new
+unlock
+IT Servicedesk
+Prasad Dhavali
+sunilkumar.h@dailyhunt.in
+	
+  P2 High
+2020110593001454	
+4 d 17 h
+Sunil Kumar H
+[Critical] : Wazuh Vulnerability Fix (RENT-ARC-LT4035)

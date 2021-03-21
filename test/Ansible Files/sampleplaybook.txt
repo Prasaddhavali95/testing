@@ -1,0 +1,86 @@
+---
+- hosts: webgroup
+  tasks:
+      - name: Create file
+        file:
+            path: /tmp/yallo
+            state: touch
+______________________________________________________________________
+---
+- hosts: my_hosts
+  sudo: yes
+  tasks:
+      - name: Create user
+        user:
+            name: mario
+            shell: /bin/zsh
+---------------------------------------------------------
+
+---
+
+- name: Installing and configuring HTTPD Web server
+
+hosts: centos6web
+
+tasks:
+
+- name: Installing HTTPD
+
+yum:
+
+name: httpd
+
+state: latest
+
+- name: Custom index.html
+
+copy:
+
+src: /root/supportfiles/index.html
+
+dest: /var/www/html/index.html
+
+- name: Starting and Enabling HTTPD
+
+service:
+
+name: httpd
+
+state: started
+
+enabled: true
+
+A) Installing HTTPD
+B) Custom index.html
+C) Starting and Enabling HTTPD
+_____________________________________
+
+
+
+---
+- name: Install nginx
+  hosts: host.name.ip
+  become: true
+
+  tasks:
+  - name: Add epel-release repo
+    yum:
+      name: epel-release
+      state: present
+
+  - name: Install nginx
+    yum:
+      name: nginx
+      state: present
+
+  - name: Insert Index Page
+    template:
+      src: index.html
+      dest: /usr/share/nginx/html/index.html
+
+  - name: Start NGiNX
+    service:
+      name: nginx
+      state: started
+
+______________________________________________________________

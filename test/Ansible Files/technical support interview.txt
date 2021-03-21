@@ -1,0 +1,123 @@
+1. Do you know about our products and company?
+This internal interview question tests the interest of the candidate and preparation for the position. To answer this question, the candidate needs to read through the job advertisement and also run through the website to get to know about the details.
+
+It is not mandatory to know all the specifications of the product but the basic information is necessary so that you score well in the interview compared to others.
+
+2. What is BIOS?
+BIOS is abbreviated as a basic input output system and present in all computers. The main purpose of the BIOS is that it ensures that all the components of the computer function together.
+
+All details regarding the hardware components in the system are contained in the BIOS. Special software is another name offered to BIOS as it interfaces the main hardware components of the system with the operating system. The flash memory chip on the motherboard is where it is stored.
+
+3. What experience do you possess in the technical support field?
+If you possess any experience in the same field you can mention and become an ideal candidate for the job role. Remember to speak about all the experiences and opinions professionally and positively. Talk about your previous job and the technical aspects that you have handled.
+
+4. Tell me about yourself?
+This is one of the most common interview questions and the very first question asked in any job interview. Though it may be usual, it is important to answer the question carefully. Remember to maintain the answer for a minute or two and not more than that.
+
+The topics to be covered in this question are education, early years, recent career experience and work history. This is a warm-up question and does not waste your best points on it.
+
+5. What are the hardware components of a desktop computer/laptop?
+This is a basic technical interview question to test the basic knowledge of computers. The answer would be that the hardware components for desktop and laptop computers are the motherboard, processor, RAM, monitor, mouse, soundcard, keyboard, graphics, hard disk drive, power supply, and floppy disk drive.
+
+6. What do you know about our organization?
+For this particular question, the candidate must be able to mention the services, products, reputation, image, history, management style, goals, problems and more about the organization.
+
+Your answer should be formulated in a way that shows that you have invested time in researching the company. Also, show that you like to learn more about the organization. Make your answers to sound positive and impress the interviewer.
+
+7. Mention the difference between RAM and ROM?
+RAM is a random access memory that use to store data temporarily. It is the data which the computer working presently. ROM called read-only memory which is a permanent type of memory storage for storage of important data. An example can the BIOS.
+
+8. Why do you want to work for us?
+The answer should formulated in a manner that satisfies the needs of the company. Your answer can that you want to be a part of the team because the organization possesses a strong management style.
+
+You can also mention that since the company accentuates on research and development, you can get a chance to expose your skills and talent for the same. Proper homework is mandatory to answer the question in the right manner.
+
+9. What would you do when audio is not working on the computer?
+The answer to this technical question is to check the basic cable connections. The connections that lead from speakers to power must be checked. Finally, the device drivers can check out and also the volume control must check.
+
+10. What can you contribute to us that someone else cannot?
+For this question, show how valuable you are. Mention your records and how you would get things accomplished. Mention all your accomplishments in your career and other specifics from your resume.
+
+Also, assure that you can obtain results with your interest and skills you possess and you would be considered a valuable employee. Also, answer that you’re a person who discovers problems, sets priorities, and can solve them with your experience.
+
+11. What are the things to do when a customer calls up that his computer is slow?
+The IT officer first needs to check if the computer takes a long time to start. The next step would be to check if the computer is slow with just one application or completely. Then the system checked for viruses, spyware, and malware. And finally, the system to check for the space available in the hard disk drive.
+
+12. What is the need for device drivers?
+Device drivers are also a piece of software that considered mandatory to run the hardware components in the system. These questions are basics and any candidate should possess basic knowledge of these aspects.
+
+13. Name the latest computer processors?
+This interview question for technical support tests your knowledge and if you updated with the latest technological trends. The latest computer processors are I3, I5, and I7 processor and Intel Pentium Quad Core.
+
+14. What are the attractive aspects and unattractive aspects that you consider the position?
+Research and find out a few attractive aspects of the job and mention them. For unattractive aspect mention a single but minor unattractive aspect of the position which not consider much.
+
+15. Do you have an idea about the blue screen of death (BSOD)?
+The indicant of a critical system problem called the blue screen of death where in this case the computer freezes completely. In such a situation it does not denote anything. The system can restart or booted in the safe mode to solve this issue.
+
+16. What challenges do you expect in this IT support job role?
+The answer determines if you’re a person who looks for challenges and if you a perfect fit for the position. You can answer that you would make use of your skills and experience in the right manner in case you hired.
+
+Also, answer that you’re a person who boosted by challenges and can face challenges. You also can mention that you possess the skills and flexibility to handle any challenging chore.
+
+17. What do you look for in a job?
+For such type of IT, technical interview questions keep your answers targeted towards opportunities that prevail in the organization. Discuss the desires that you want to perform and be noticed as a perfect employee.
+
+Do not formulate your answer which wraps towards your security, rather focus on the available opportunities.
+
+18. For an average call, what is your expected period?
+For IT support, the solving of a problem in a prompt manner is important. The Problem-solving aspect to the satisfaction of the customer is another aspect of IT support engineers. Your answer should present that you focus on communication skills, technical aspects, problem-solving skills and also interested in customer satisfaction.
+
+You can answer that the time handled depends on the level of the issue. You can mention that you have faced some issues and per call, it may take about 2 to 3 minutes.
+
+19. What is your typical workweek as an IT support officer?
+The employers would like to know what the candidate would do while they work. Take a deep look at the job role you have applied for and how it relates to your previous role. When you wanted to talk about typical work for a week, avoid discussing non-work related activities.
+
+During the time of the company, you should productively use the time. Your answers must focus on work and formulate your answers in a way that presents that you organized.
+
+20. What do you know about the company?
+Researching the company before going for an interview is important. This shows how much interest the candidate has on the company. The candidate can Google search for the company name and press releases so that the latest news about the company can be obtained.
+
+The organization will have its website which can research and the careers and about us, a section can read through. More details about the company can be obtained by reading through the company’s LinkedIn page.
+
+21. Which operating system are you famed with?
+Remember to answer this question by researching the systems the organization is using. Try to get familiar with the system the organization makes use of. This also mentions other systems that you have worked and have experience with.
+
+22. What are the lights that are present on the modem and what do they indicate?
+The lights on the modem are power light which indicates if the power is on or off. The link light is the next light which makes sure if the modem is getting the broadband signal from the ISP.
+
+To ensure if the internet is working, data light utilized. Connectivity light ensures if the modem linked to the computer. These are the lights present in the modem and their functions.
+
+23. What are the steps you follow to solve a technical problem?
+This commonly asked IT support interview questions would present your familiarity with the IT support process. Your answer would also be a key that would enable the employer to schedule training if required.
+
+Remember to list down all the steps for solving in the right order and also answer that each organization has its own set of procedures.
+
+24. What are the tools you think are mandatory for problem-solving?
+Team members, experience, manuals, and knowledge are a few tools that are useful for troubleshooting. Also, do not present that team members are the main tool because any issue to solve must handle independently.
+
+25. As an IT support engineer have you learned from your mistakes?
+The real fact is that everyone who works makes a mistake. There is no loss in making a mistake while working. The main aspect of asking this question is to know if the candidate makes mistakes and learns from it without repeating.
+
+To make this question an apt one, you can state an example where you made a mistake and learned from it and also never repeated the same.
+
+26. Where do you see yourself in the next five years? 
+An answer to this type of question can frame keeping in mind certain objectives related to your self:
+
+Level of Interest you are having for the job
+Your strengths and core competencies.
+Goals and missions of your professional life.
+Your year-wise goals.
+Your career is of utmost importance to you.
+27. What does a ‘?’ sign in the device manager indicates?
+When this sign appears, it indicates the device not properly installed. Such a problem arises in the case of brand new plug-in cards.
+
+28. Why did an 8085 processor call an 8-bit processor?
+The answer is very simple because in 8085 Processor it has 8 bit ALU(Arithmetic Logical Unit) and in 8086 processor it has 16 Bit ALU(Arithmetic Logical Unit)
+
+30. What is ‘A’ record and what is ‘MX record’?
+‘A’ record also knows as host record, and it maps the IP address by name in which you can find out the IP address of a name. While, ‘MX record’ also knows as mail exchanger record, by the help of ‘MX’ record, the location of the mail server identified. The record also found in DNS.
+
+These are a few common IT support interview questions and answers. Almost all answers should formulated in a positive tone and focusing on the clients and solving their issues. Candidates should be aware of basic technical knowledge and computer troubleshooting questions and answers.
+
+IT supports one highly demanded job and hence proper knowledge required to solve the questions in the interview.

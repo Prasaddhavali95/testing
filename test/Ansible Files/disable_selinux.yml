@@ -1,0 +1,13 @@
+---
+- name: Search for new line in a file. If found replace it, if not add it
+  hosts: all
+  user: ec2-user
+  become: yes
+  become_method: sudo
+  tasks:
+     - name: Disable SELINUX
+       lineinfile:
+         path: /etc/selinux/config
+         regexp: '^SELINUX='
+         line: 'SELINUX-disable'
+...

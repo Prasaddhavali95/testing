@@ -1,0 +1,80 @@
+Linux, Unix System administration, TCP/IP, DNS, and troubleshooting experience.
+
+Microsoft Windows administration and troubleshooting experience.
+
+Network technologies (firewalls, routers, switches) and protocols (TCP/IP, DNS, LDAP, etc.).
+
+Intrusion Detection, Packet trace analysis, Security tools, and technologies;
+
+Endpoint security experience, including network design, implementation, and management;
+
+Firewall, VPN, IDS, and related network security design and implementation are a plus;
+
+Desired security network and systems related professional certifications are a plus;
+
+Ability to document calls and write FAQ and short instructional technical documents essential.
+
+
+*****************************************************************************************************
+
+
+Expert knowledge of data networking protocols, specifically TCP/IP, routing and switching
+
+Strong experience with security products firewalls, IPSec, IDS/IPS, Anti Spam, virus scanning
+
+Administrator level working knowledge of Windows, Linux or Unix skills an advantage
+
+Experience with VMware and/or other virtualization technologies an advantage
+
+Good understanding of Web application concepts, security and vulnerabilities
+
+Excellent troubleshooting and problem solving skills
+
+Good knowledge of a scripting language such as Perl, Python, Ruby, Expect or bash, in order to be
+able to collect, parse and analyze data
+
+Excellent customer handling skills, with ability to handle urgent situations professionally.
+
+Strong English communication skills, oral & written, with additional languages being an asset.
+
+
+**********************************************************************************************************
+
+Some of the standard concepts covered in these classes are as follows:
+
+Basic networking topics (LANs, WANs, Ethernet, and so on)
+Troubleshooting and solving network problems
+Wireless technologies (such as Wi-Fi and Bluetooth) and security
+Security for various network types, including basic computer forensics
+Authentication types and their respective configurations and management
+Network design and implementation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

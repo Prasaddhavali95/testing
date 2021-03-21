@@ -1,0 +1,16 @@
+
+
+
+goto tradingview.com -> create acccount check the company shareing up and Down
+fx icon
+type  mscd 
+type ema rsi
+
+click and candel option next to D option
+click on chart setting option goto Scales option and select indicator last value label
+
+
+Zerodha
+https://chartink.com/screener/mystockstobuy
+https://signup.zerodha.com/validate/email
+https://in.tradingview.com/symbols/NSE-PNBHOUSING/

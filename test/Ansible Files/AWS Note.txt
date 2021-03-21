@@ -1,0 +1,478 @@
+SUNDAY  6/12/2020
+
+=============================================================================================
+# What is AWS   
+# Create AWS Account   -> created
+# Setup AWS Budget    -> setup done
+# What is AWS Regions & AZ(Availability Zone )
+# AWS Infrastructure & Regional Table
+# IAM Introduction
+=============================================================================================
+AZ -->(Availability Zone)
+
+AWS Regions  -> it is nothing but Geographical loaction
+
+in india we have 3 DC(Data Center) zones 
+
+Most of AWS services are region-scoped 
+
+
+=============================================================================================
+# IAM Introduction
+# Enable Root MFA (Enable MFA ) through Google Authenticator 
+# Create IAM & Group  -> created user and group
+# Setup Password policy  ---> checked it
+# Caret IAM Sign-in URL Alias   --> chaged url or IAM
+# EC2 Introduction
+# Create 1st EC2 Instance.
+# SSH to EC2 Instance
+
+
+
+# IAM ---> Identity and Access Management
+
+IAM Best practice:
+# one IAM user per PHYSICAL PERSON
+# one IAM Role per Application
+# IAM credentials never shared
+# Never write IAM credentials in CODE
+# NEVER use the ROOT credentials for intial setup
+# Never use ROOT IAM credentials
+
+=============================================================================================
+what is EC2
+# EC2 Introduction:
+ * EC2 is one of most popular of AWS offering
+ * It mainly consitsts of the capability of:
+    *Renting virtual machine (EC2)
+	*Storing data on virtual drive (EBS)
+	*Distributing load across machines (ELB)
+	*scaling the services using an auto-scalling group(ASG)
+	
+ * Knowing EC2 is fundamental to understand how the cloud Works
+
+
+
+
+
+How ton connect aws console to ec2-user
+SSH EC2 to WINDOWS
+. downlaod .pem file first
+. then open puttygen software and import .pem file into it and save file as private and save it into .ppk extension format
+. then again open putty software import .ppk file into putty -> SSH --> auth --> import .ppk file 
+. then copy paste ip of aws ec2-user then you will connect session in putty ....
+
+
+SSH EC2 to Ubuntu
+. goto .pem file loaction open git bash
+. then type ssh -i filename.pem ec2-user@ipaddress
+. then you will connect...
+
+
+
+=================================================================================================================================
+
+
+# Introduction AWS SG(Security Group)
+# AWS SG Deep Dive
+# Understand EC@ private & Public IP
+# AWS Elastic IP
+=================================================================================================================================
+# Install Appache Web server on EC2
+# EC2 USer data
+# Diffrence EC2 instance types
+# Spot instance & Spot Fleet
+
+==================================================
+
+# EC2 AMIs
+# Cross Account AMI Copy.
+# EC2 placement Group
+# Elastic Network Interface (ENI)
+
+==================================================
+
+
+# Ansible + Create IAM User and Group
+# Ansible + Create security group to allow port 22 & 80
+# Ansible + Create AMI and make it public
+# Ansible + Create and attach ENI to EC2 instance
+
+
+!)goto your account click on My security Credentials -> then Access keys (access key ID and secret access key)
+ -> Create Access Key -> Download Key File 
+
+
+
+# ansible-doc -s iam  -> command
+# 
+
+using ansible we need to create iam user and group 
+program:
+---
+ - name: createing iam user and group
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tags: provisioning
+  tasks:
+     - name: create new iam user  with API keys
+       iam:
+         aws_access_key: "{{ access_key }}"
+         aws_secret_key: "{{ secret_key }}"
+         iam_type: user
+         name: "{{ item }}"
+         state: present
+         access_key_state: create
+  loop:
+    - prasad
+    - Rajesh
+    - name: create new iam  group with API keys
+      iam:
+         aws_access_key: "{{ access_key }}"
+         aws_secret_key: "{{ secret_key }}"
+         iam_type: user
+         name: "{{ item }}"
+         state: present
+         loop:
+           - devops
+           - developers
+         register: new_groups
+...
+
+exicution: 
+ansible-playbook crate_iam_user_and_group.yml -e access_key="AKIAIMCZD7JMY5RF5ZTA" -e secret_key="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"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

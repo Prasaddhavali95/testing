@@ -1,0 +1,14 @@
+--- #Begining og line
+- name: My 1st Palybook
+  hosts: webgroup
+  user: ec2-user
+  become: yes
+  become_method: sudo
+  task:
+    - name: 1. Install Latest Apache/HTTPD vesion
+      yum : name=httpd state=present
+
+    - name: 2. Start the HTTPD service
+      service: name=httpd state=started enabled=yes
+
+... #end of lines

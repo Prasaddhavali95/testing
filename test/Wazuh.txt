@@ -1,0 +1,110 @@
+The Wazuh agent installation and registration Steps
+
+
+Linux OS
+
+Open a terminal in the Linux Wazuh agent’s host as a root user.
+
+Run below command install Wazuh Agent:
+# curl -so wazuh-agent.deb https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.0.3-1_amd64.deb && sudo WAZUH_MANAGER='thematrix.dailyhunt.in' dpkg -i ./wazuh-agent.deb
+
+1. Download the CA file from the link http://bit.ly/rootCAforYotta and Copy the rootCA.pem on the Wazuh agent installation folder /var/ossec/etc:
+# cp rootCA.pem /var/ossec/etc
+
+2. To register the Wazuh agent, run the agent-auth utility providing the Wazuh manager’s IP address and location of the CA: (Disconnect VPN if connected)
+# /var/ossec/bin/agent-auth -m thematrix.dailyhunt.in -v /var/ossec/etc/rootCA.pem
+
+3. To verify the Wazuh manager IP in the agent configuration file placed at /var/ossec/etc/ossec.conf.
+
+In the <client><server> section, verify the Wazuh server DNS name and change the port Number:
+
+<client>
+  <server>
+    <address>thematrix.dailyhunt.in</address>
+    <port>1514</port>
+    ...
+  </server>
+</client>
+
+
+And in the same ossec.conf file also change the value to -20 to lower the priority
+
+<!-- Nice value for Syscheck module -->
+    <process_priority>-20</process_priority>
+
+4. Restart the Wazuh agent:
+# systemctl restart wazuh-agent
+
+
+Mac OS
+
+Run below command to install Wazuh Agent:
+# curl -so wazuh-agent.pkg https://packages.wazuh.com/4.x/macos/wazuh-agent-4.0.3-1.pkg && sudo launchctl setenv WAZUH_MANAGER 'thematrix.dailyhunt.in' && sudo installer -pkg ./wazuh-agent.pkg -target /
+
+Open a terminal in the MacOS X Wazuh agent’s host as a root user.
+
+1. Download the CA file from the link http://bit.ly/rootCAforYotta  and Copy the rootCA.pem on the Wazuh agent installation folder  /Library/Ossec/etc :
+#cp rootCA.pem /Library/Ossec/etc
+
+2. To register the Wazuh agent, run the agent-auth utility providing the Wazuh manager’s IP address and location of the CA: (Disconnect VPN if connected)
+# /Library/Ossec/bin/agent-auth -m thematrix.dailyhunt.in -v /Library/Ossec/etc/rootCA.pem
+
+3. To verify the Wazuh manager IP in the agent configuration file placed at  /Library/Ossec/etc/ossec.conf
+
+In the <client><server> section, verify the Wazuh server DNS name and change the port Number:
+
+
+<client>
+  <server>
+    <address>thematrix.dailyhunt.in</address>
+    <port>1514</port>
+    ...
+  </server>
+</client>
+
+And in the same ossec.conf file also change the value to -20 to lower the priority
+
+<!-- Nice value for Syscheck module -->
+    <process_priority>-20</process_priority>
+
+
+4. Restart the Wazuh agent:
+ 	# /Library/Ossec/bin/ossec-control restart
+
+
+Windows OS
+Run the below command to install Wazuh Agent on Powershell:
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.0.3-1.msi -OutFile wazuh-agent.msi; ./wazuh-agent.msi /q WAZUH_MANAGER='thematrix.dailyhunt.in' WAZUH_REGISTRATION_SERVER='thematrix.dailyhunt.in'
+
+Open a Powershell or CMD as an Administrator.
+
+1. Download the CA file from the link http://bit.ly/rootCAforYotta and Copy the rootCA.pem on the Wazuh agent installation folder C:\Program Files (x86)\ossec-agent:
+ copy rootCA.pem in C:\Program Files (x86)\ossec-agent
+
+2. To register the Wazuh agent, run the agent-auth utility providing the Wazuh manager’s IP address and location of the CA: (Disconnect VPN if connected)
+# cd C:\Program Files (x86)\ossec-agent\
+# .\agent-auth.exe -m thematrix.dailyhunt.in -v “C:\Program Files (x86)\ossec-agent\rootCA.pem”
+
+3. To verify the Wazuh manager IP in the agent configuration file placed at C:\Program Files (x86)\ossec-agent\ossec.conf. 
+
+In the <client><server> section, verify the Wazuh server DNS name and change the port Number:
+
+<client>
+  <server>
+    <address>thematrix.dailyhunt.in</address>
+    <port>1514</port>
+    ...
+  </server>
+</client>
+
+And in the same ossec.conf file also change the value to -20 to lower the priority
+
+<!-- Nice value for Syscheck module -->
+    <process_priority>-20</process_priority>
+
+4. Restart the Wazuh agent:
+# Restart-Service -Name Wazuh (for Power shell)
+               Or
+# net stop Wazuh (For CMD)
+	# net start Wazuh (For CMD)
+

@@ -1,0 +1,42 @@
+sudo chmod u+x cy_runner.sh
+sudo ./cy_runner.sh
+ps aux | grep CynetEPS
+
+
+RENT-ARP-LT5049   Dell XPS i5	DNDVMQ2          Assigned to Geetanjali
+RENT-ARP-LT5051   Dell XPS i5	4HLK7Y2          Assigned to Vaishali Singh
+VER-BLR-LT1822    Dell Latitude 3490 i3	62L8BV2  Assigned to Anjani.singh 
+VER-BLR-LT1855    Dell Latitude 3490 i5	221PBV2  Assigned to Abhinav.anand  
+
+VER-BLR-LT1856    Dell XPS i5	6RF4SQ2   Assigned to Rahul Sharma
+
+
+homework:
+
+In Data validation, under Criteria what do other options do? Like: Number, Date, Custom Formula etc.
+
+2. What is the benefit of creating Named Ranges or how to use them
+
+3. What is the use of slicer
+
+
+Need to take back Laptops
+RENT-ARP-LT5017 
+VER-BLR-LT1775
+VER-BLR-LT1688
+
+
+Hi sir,
+the laptop almost 6 year old and we have planing to replace it
+
+
+VER-BLR-LT1925 Archana MS   		(windows update)
+VER-BLR-LT1930 Sarbodeep Sood 		( Mozilla Firefox  Adobe Reader)done
+RENT-ARP-LT5227  Prashantha R		(windows update) tommarrow 
+RENT-ARC-LT4035   Khushboo Jain  	(Windows 10 and Mozilla Firefox )
+
+RENT-ARP-LT5138 old one
+	
+
+
+

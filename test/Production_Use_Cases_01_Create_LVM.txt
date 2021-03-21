@@ -1,0 +1,162 @@
+==========================================================
+		CLOUDETHIX 	:- Production Use Cases 01. 
+==========================================================
+
+---------------------------------------------------------	
+		TASK		:- Create LVM using shell Script.
+---------------------------------------------------------
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+#)  STEPS TO CREATE LVM ON YOU LAB SETUP.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+	1) Go to ORACLE VIRTUAL BOX & Add 10 GB Disk to your Linux Machine.
+	2) Then run fdisk -l command and verify is the new disk is added to Linux machine.
+	3) Once new disk is confirmed , then create 1 lvm partition with below steps.
+		
+		#] fdisk /dev/xvdf
+			press n to create a new disk partition,
+			press p to create a primary disk partition,
+			press 1 to denote it as 1st disk partition,
+			press ENTER twice to accept the default of 1st and last cylinder.
+			press t to change the Linux partition type to LVM partition type(8e).
+			press L to list all the currently supported partition type.
+			press 8e to change partition 1 to 8e, i.e. Linux LVM partition type.
+			press p to print partition table & check /dev/xvdf1 disk.
+			press w to write the partition table and exit fdisk upon completion.
+
+	4) Now run LVM command will create a LVM physical volume (PV) with /dev/xvdf1
+		#] pvcreate /dev/xvdf1
+		#] pvs  or pvdisplay
+	
+	5) Now create Volume Group with below command. 
+		#] vgcreate myvg01 /dev/xvdf1
+		#] vgs  or vgdisplay
+		
+	6) Now you are ready for CloudEthix 1st Production use-case create lvm using shell script.
+	
+	
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+#)  GATHER REQUIREMENT TO CREATE LVM. 
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+	1) How to create LVM in Linux in normal way, manually.
+
+		a)  Run lvcreate create command to create LVM.
+				#] lvcreate --name mylvm01 --size 1G myvg01
+		
+		b) 	Format the LVM using mkfs.xfs /mkfs.ext4 /mkfs.ext3 command.
+				#] mkfs.ext4 /dev/myvg01/mylvm01
+				
+		c)	Create the mount_point with mkdir command.
+				#] mkdir -p /my_lvm_mount
+				
+		d)	Mount the LVM using mount command. 
+				#] mount /dev/myvg01/mylvm01 /my_lvm_mount
+				
+		e)	Add new LVM entry in /etc/fstab file.
+				#] vim /etc/fstab
+					/dev/myvg01/mylvm01   /my_lvm_mount  ext4  defaults 0 0
+				
+
+	2) At this stage , you understood all the steps required to create LVM manually. 
+	
+	3) Now , Lets write the algorithm for you code.  
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+#)  NOW WRITE THE ALGORITHM OF YOUR SHELL SCRIPT.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+	1) Write shebang value.
+	2) Add 5 variables to Use 5 Command line arguments.
+	3) Check if 5 args are provided with if statement.
+		3.1) If yes then go ahead
+		3.2) If not then exit the code. 
+	4) Run lvcreate command and create lvm.
+	5) Check if LVM is created with exit status in if statement. 
+		5.1) Format the lvm using mkfs command.
+		5.2) Create mount point using mkdir -p command.
+		5.3) Append new lvm entry in /etc/fstab file with echo command.
+		5.4) Mount lvm using mount command.
+		5.5) Show new mount point with df command on screen.
+	6) If LVM is not created the Print msg on screen and exit.  
+
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+#)  NOW LETS FOLLOW THE ALGORITHM & WRITE SHELL SCRIPT.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+##############( ALGO Step 1: Write shebang value.)
+
+#!/bin/bash  
+
+##############( ALGO Step 2: Add 5 variables to Use 5 Command line arguments.)
+
+LV_NAME=$1
+LV_SIZE=$2
+VG_NAME=$3
+FILE_SYSTEM=$4
+MOUNT_POINT=$5
+
+##############( ALGO Step 3: Check if 5 args are provided with if statement.)
+
+if [[ $# -ne 5 ]]
+then
+        echo -e "Usage: $0 lvm_name  lvm_size  vg_name  file_system  mount_point"
+        exit   ##### EXIT will terminate entire shell script.
+fi
+
+##############( ALGO Step 4: Run lvcreate command and create lvm.)
+
+lvcreate -y --name $LV_NAME --size $LV_SIZE $VG_NAME >/dev/null 2>&1
+
+##############( ALGO Step 5: Check if LVM is created with exit status in if statement.)
+
+if [[ $? -eq 0 ]]
+then
+		echo -e "\nLVM /dev/$VG_NAME/$LV_NAME is Created"
+		
+		#### 5.1) Format the lvm using mkfs command.
+		echo -e "\nNow formatting & mounting it."
+		mkfs.$FILE_SYSTEM /dev/$VG_NAME/$LV_NAME >/dev/null 2>&1
+		
+		#### 5.2) Create mount point using mkdir -p command
+		mkdir -p $MOUNT_POINT
+        
+		#### 5.3) Append new lvm entry in /etc/fstab file with echo command.
+		echo -e "\nNow Adding FSTAB Entry for /dev/$VG_NAME/$LV_NAME"
+		echo -e "/dev/$VG_NAME/$LV_NAME $MOUNT_POINT $FILE_SYSTEM defaults  0 0" >> /etc/fstab
+		
+		#### 5.4) Mount lvm using mount command.
+		echo -e "\nMounting /dev/$VG_NAME/$LV_NAME $MOUNT_POINT"
+		mount /dev/$VG_NAME/$LV_NAME $MOUNT_POINT
+		
+		#### 5.5) Show new mount point with df command on screen.
+		echo -e "\nDisk is mounted. FYI below output."
+		echo -e "\n\n=============================\n\n `df -h $MOUNT_POINT`\n\n=============================\n\n"
+
+##############( ALGO Step 6:) If LVM is not created the Print msg on screen and exit.
+
+else
+        echo -e "There is some issue while creating LVM. \n\nExiting Script"
+        exit
+fi
+
+
+==========================================================
+Thank You,
+ 	 Regards,
+		Team CloudEthiX
+==========================================================

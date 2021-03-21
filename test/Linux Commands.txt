@@ -1,0 +1,14 @@
+********************For Speedup Laptop *********************
+Open the Terminal with Alt + Ctrl + T and type these commands:
+
+sudo -s
+sysctl vm.swappiness=10
+sudo swapoff -a
+sudo swapon -a
+sudo apt-get remove apt-xapian-index
+cd /etc/xdg/autostart/
+sudo sed --in-place 's/NoDisplay=true/NoDisplay=false/g' *.desktop
+sudo apt-get install unity-tweak-tool
+sudo apt-get install preload
+sudo apt-get install compizconfig-settings-manager
+****************************************************

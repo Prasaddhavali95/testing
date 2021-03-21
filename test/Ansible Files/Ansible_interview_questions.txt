@@ -1,0 +1,188 @@
+1) What Is Ansible?
+
+Ansible is a configuration management system. 
+It is used to set up and manage infrastructure and applications.
+ It allows users to deploy and update applications using SSH, without needing to install an agent on a remote system.
+ 
+ 
+
+2) What's the use of Ansible?
+
+Ansible is used for managing IT infrastructure and deploy software apps to remote nodes.
+
+For example, Ansible allows you to deploy as an application to many nodes with one single command.
+ However, for that, there is a need for some programming knowledge to understand the ansible scripts.
+ 
+ 
+
+3) What is Ansible Galaxy?
+
+Ansible can communicate with configured clients from the command line by using ansible command. It also allows you to 
+automate configuration by using ansible-playbook command. To create the base directory structure,
+ you can use a tool bundled with Ansible which is known as ansible-galaxy.
+
+Command:
+
+$ ansible-galaxy init azavea. packer
+azavea.packer was created successfully
+
+
+
+4) What is Continuous Delivery?
+
+Continuous delivery is a practice of delivering the software as soon as it developed. 
+In this method, we need to use versioning control system. The software is constantly updated in live production systems.
+
+
+
+5) What is the way to access shell environment variables in Ansible?
+
+In Ansible, if you want to access existing variables, the user needs to use the ‘env’ lookup plugin.
+ Example, to access the value of the Office environment on the management machine:
+
+You need to write following code:
+
+---
+# ...
+vars:
+local_home: "{{ lookup('env','Office') }}"
+I
+{{ ansible_env.SOME_VARIABLE }}
+
+
+
+6) What is the code you need to write for accessing a variable name?
+
+Variable names can be built by adding using the following method:
+
+{{ hostvars[inventory_hostname]['ansible_' + which_interface]['ipv4']['address'] }} 
+The method of using hostvars is important because it’s a dictionary of the entire namespace of variables. 
+‘inventory_hostname’ variable specifies the current host you are looking over in the host loop.
+
+
+
+7) Explain how you can disable cowsay?
+
+If cowsay is installed then executing playbooks inside the Ansible you can disable coway by using following  options:
+
+Uninstall cowsay
+Setting up value for the environment variable
+export ANSIBLE_NOCOWS=1
+
+
+
+8) Explain how you can copy file recursively onto a target host?
+
+The "copy" module has a recursive parameter. However, 
+if you want this to perform more efficient for a large number of files, 
+then “synchronize” module is the best option for you.
+
+
+
+9) How Can you submit a change to the Documentation in Ansible?
+
+Documentation for Ansible is kept in the project git repository.
+ It contains complete instructions for contributing can be found in the docs.
+ 
+ 
+
+10) What Is the Best Method to Make Content Reusable/redistributable?
+
+You can read everything about “Roles” in the playbooks documentation section.
+ This helps to make playbook content self-contained and shareable with other ansible users.
+ 
+ 
+
+11) What is Ansible Tower?
+
+Ansible tower is a tool which makes Ansible very easy to use. 
+It acts as a hub for the task automation. The tower is free for usage till 10 nodes.
+
+
+
+12) What’s the method to check the inventory vars defined for the host?
+
+For that use this command:
+
+ansible -m debug -a "var=hostvars['hostname']" localhost
+
+
+
+13) State the difference between Variable name and Environment Variables.
+
+Variable Name
+
+Environment Variables
+
+It can be built by adding strings.	To access the environment variable, you need to access existing variables.
+{{ hostvars[inventory_hostname][‘ansible_’ + which_interface][‘ipv4’][‘address’] }}	# … vars: local_home: “{{ lookup(‘env’,’HOME’) }}”
+Allows to add strings	To set environment variables, we need to see the advanced playbooks section.
+Ipv4 address type use for Variable names we use the ipv4 address.	For Remote environment variables, use {{ ansible_env.SOME_VARIABLE }}
+
+
+14) What are ad-hoc commands?
+
+You can think of ad-hoc commands as a way for us to take actions on our hosts without writing a playbook.
+ For example, if we want to reboot all hosts in a particular group(webservers). 
+ Then you can write a playbook or simply run a one-off ad-hoc command.
+
+
+
+15) Explain Ansible facts
+
+You can think of ansible facts as a way for ansible to get
+ information about a host and store them in variables for easy access.
+ This information stored in predefined variables are available to use in the playbook. 
+ To generate facts, ansible runs the setup module.
+ 
+ 
+ 
+
+16) How do you see all variables for a host?
+
+You can see them using the host vary variable.
+ This stores host variables with the hostname as key. 
+ For example, to look at the variables defined for localhost, you can run;
+
+ansible -m debug -a "var=hostvars[inventory_hostnam
+
+
+
+17) Explain modules in ansible
+
+Modules in Ansible are idempotent. From a RESTful service standpoint,
+ for the operation to be idempotent, clients can perform the same result by using modules in Ansible.
+ Multiple identical requests become a single request.
+
+There are two different types of modules in Ansible:
+
+Core modules
+
+Extras modules
+
+Core Modules
+
+The Ansible team maintains these types of modules, and they will always ship with Ansible software. They will also give higher priority for all requests than those in the “extras” repos.
+
+Extras Modules:
+
+These modules currently is bundled with Ansible but might available separately in the future. They are also mostly maintained by the Ansible community. These modules are still usable, but it can receive a lower rate of response to issues and pull requests.
+
+
+
+
+18) When should you test playbooks and roles?
+
+In ansible, Tests can be added either in new Playbooks or to existing Playbooks. 
+Therefore, most of the testing job offers a clean hosting each time. By using this testing methodology,
+ you need to make very little to no code changes.
+ 
+ 
+
+19) Discuss method to Create an Empty File with Ansible
+
+To create and empty file you need to follow given steps.
+
+Step 1. Save An Empty File into The Files Directory
+
+Step 2. Copy It to The Remote Host.

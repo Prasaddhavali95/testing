@@ -1,0 +1,21 @@
+---
+- name: User Add
+  hosts: all
+  user: ec2-user
+  gather_facts: no
+  become: yes
+  become_method: sudo
+  tasks:
+     - name: Create user on all server.
+       user:
+        name: prasad
+        state: present
+        generate_ssh_key: yes
+
+
+...
+
+
+How to check when did user changed his last password? using ansible
+Write playbook for password reset 90 days? and should send remainder br go 45days
+ 
